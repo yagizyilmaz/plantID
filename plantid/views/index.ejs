@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>plantID</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:200,100" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<script src="/javascripts/jquery-3.2.1.min.js"></script>
+	<script src="/javascripts/jquery.knob.js"></script>
+	<script src="/javascripts/masonry.pkgd.min.js"></script>
+	<script src="/javascripts/imagesloaded.pkgd.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id="help-box" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Help</h4>
+				</div>
+				<div class="modal-body">
+					<p>Please give answers to the questions on the left panel regarding the plant you are searching for. Possibilities will be filtered based on your answers.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="about-box" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">About</h4>
+				</div>
+				<div class="modal-body">
+					<p>This project is developed as part of a TÜBİTAK 1001 project (113E499) by Berrin Yanıkoğlu, Mostafa M. Ghazi, and Erchan Aptoula. Web site design and development by Yağız Yılmaz, Poyraz Kıvanç Karaçam based on Emre İnal's previous work (<a href="http://plantid.sabanciuniv.edu">link</a>).</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid col-lg-offset-1 col-lg-10">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href=""><span id="logo-1">plant<i class="fa fa-envira" aria-hidden="true"></i></span>ID</a>
+				<p class="navbar-text hidden-xs">Plant Identification System by Sabanci University</p>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a data-toggle="modal" data-target="#help-box" href="">HELP</a></li>
+					<li><a data-toggle="modal" data-target="#about-box" href="">ABOUT</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="col-lg-4 col-md-6 col-sm-12">
+			<div class="row">
+				<div class="jumbotron" id="filter">
+					<h4>Search Plants by Describing Leaf Attributes:</h4>
+					<div class="expandible-question">
+						<div class="question">
+							<div>What is the general shape of the leaf?</div>
+							<div class="btn-group btn-group-justified" data-toggle="buttons" id="q1">
+								<label class="btn btn-success">
+									<input type="radio" name="shape" id="q1a-a1" value="= 'S'"> Simple Oval
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="shape" id="q1a-a2" value="= 'M'"> Lobed
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="shape" id="q1a-a3" value="= 'L'" class="expand-trigger"> Leaflets
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="shape" id="q1a-a4"> Not Sure
+								</label>
+							</div><br>
+						</div>
+						<div class="question secondary-question">
+							<div>Is the leaf pinnated?</div>
+							<div class="btn-group btn-group-justified" data-toggle="buttons">
+								<label class="btn btn-success">
+									<input type="radio" name="pinnated" id="q1b-a1" value="= 'Y'"> Yes
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="pinnated" id="q1b-a2" value="= 'N'"> No
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="pinnated" id="q1b-a3"> Not Sure
+								</label>
+							</div><br>
+						</div>
+						<div class="question secondary-question">
+							<div>Are the leaflets bilateral?</div>
+							<div class="btn-group btn-group-justified" data-toggle="buttons">
+								<label class="btn btn-success">
+									<input type="radio" name="leaflet_bilateral" id="q1c-a1" value="= 'Y'"> Yes
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="leaflet_bilateral" id="q1c-a2" value="= 'N'"> No
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="leaflet_bilateral" id="q1c-a3"> Not Sure
+								</label>
+							</div><br>
+						</div>
+						<div class="question secondary-question">
+							<div>Are there any leaflets on the top?</div>
+							<div class="btn-group btn-group-justified" data-toggle="buttons">
+								<label class="btn btn-success">
+									<input type="radio" name="leaflet_top" id="q1d-a1" value="= 'Y'"> Yes
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="leaflet_top" id="q1d-a2" value="= 'N'"> No
+								</label>
+								<label class="btn btn-success">
+									<input type="radio" name="leaflet_top" id="q1d-a3"> Not Sure
+								</label>
+							</div><br>
+						</div>
+					</div>
+					<div class="question">
+						<div>Is the tip of the leaf slanted?</div>
+						<div class="btn-group btn-group-justified" data-toggle="buttons">
+							<label class="btn btn-success">
+								<input type="radio" name="slanted" id="q2-a1" value="= 'Y'"> Yes
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="slanted" id="q2-a2" value="= 'N'"> No
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="slanted" id="q2-a3"> Not Sure
+							</label>
+						</div><br>
+					</div>
+					<div class="question">
+						<div>Is the leaf serrated?</div>
+						<div class="btn-group btn-group-justified" data-toggle="buttons">
+							<label class="btn btn-success">
+								<input type="radio" name="serrated" id="q3-a1" value="= 'Y'"> Yes
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="serrated" id="q3-a2" value="= 'N'"> No
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="serrated" id="q3-a3"> Not Sure
+							</label>
+						</div><br>
+					</div>
+					<div class="question">
+						<div>How prominent are the leaf's veins?</div>
+						<div class="btn-group btn-group-justified" data-toggle="buttons">
+							<label class="btn btn-success">
+								<input type="radio" name="veins" id="q4-a1" value="in ('L','M')"> Low / Medium
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="veins" id="q4-a2" value="in ('M','H')"> Medium / High
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="veins" id="q4-a3"> Not Sure
+							</label>
+						</div><br>
+					</div>
+					<div class="question">
+						<div>Are the veins of the leaf bilateral?</div>
+						<div class="btn-group btn-group-justified" data-toggle="buttons">
+							<label class="btn btn-success">
+								<input type="radio" name="veins_bilateral" id="q5-a1" value="= 'Y'"> Yes
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="veins_bilateral" id="q5-a2" value="= 'N'"> No
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="veins_bilateral" id="q5-a3"> Not Sure
+							</label>
+						</div><br>
+					</div>
+					<div class="question">
+						<div>Is the leaf shiny?</div>
+						<div class="btn-group btn-group-justified" data-toggle="buttons">
+							<label class="btn btn-success">
+								<input type="radio" name="shiny" id="q6-a1" value="in ('L','M')"> Low / Medium
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="shiny" id="q6-a2" value="in ('M','H')"> Medium / High
+							</label>
+							<label class="btn btn-success">
+								<input type="radio" name="shiny" id="q6-a3"> Not Sure
+							</label>
+						</div>
+					</div>
+					<button id="reset" type="button" class="btn btn-danger btn">Reset</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="jumbotron text-center" id="progress">
+					<div class="row">
+						<div id="result-block">
+							<div id="total-results">
+								<h4>Matches:</h4>
+								<h4 id="number-of-results"></h4>
+							</div>
+							<div id="slash"><h1>/</h1></div>
+							<div id="total-species">
+								<h4>Species:</h4>
+								<h4 id="number-of-total"></h4>
+							</div>
+						</div>
+						<input value="0" class="dial" id="progresscircle" disabled readonly>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-8 col-md-6 col-sm-12">
+			<div class="jumbotron" id="results-container">
+				<h4>Results</h4>
+				<div id="results-photo"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="/javascripts/plant.js"></script>
+</body>
+</html>
